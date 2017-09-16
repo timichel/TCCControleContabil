@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<h:body> 
+<h:form>
+<p:dashboard id="board" model="#{dashBoardView.model}">
+<p:panel id="telaPrincipal" header="Tela principal Usuário: Pedro Araujo de Moraes" style="width:1000px;">
+<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+<p:panel id="BuscaEmpresa" header="Lançamento de Fatos Contábeis">
+ <h:panelGrid columns="2" id="buscaEmpresa">
+	<h:outputText value="CNPJ: " />
+	<p:inputText  value="#{contador.e.CNPJ}" id="cnpj"/>
+	 <p:commandButton action="#{contador.SelecionaEmpresa(contador.e.CNPJ)}" value="Buscar" update="@form"/>
+    <h:outputText value=" " />
+</h:panelGrid>
+<h:panelGrid columns="2" id="dadosEmpresa">
+    <h:outputText value="Nome Fantasia: " />
+	<h:outputText value="#{contador.e.fantasia}" />
+	<h:outputText value="Razão Social: " />
+	<h:outputText value="#{contador.e.razaoSocial}" />
+</h:panelGrid>
+<h:panelGrid columns="2" id="Lancamento">
+	<h:outputText value="Data do lançamento: " />
+	<p:inputText value="#{contador.lancamento.data}" id="dataLancamento">
+	   <f:convertDateTime  pattern="dd/MM/yyyy">
+	   </f:convertDateTime>
+	</p:inputText>
+	<h:outputText value="Descrição: " />
+	<p:inputText value="#{contador.lancamento.descricao}"  size="70" id="descricao"/>
+</h:panelGrid>
+<p:panel header="Lançamento de itens">
+<h:panelGrid columns="2" id="itensLancamento">
+	<h:outputText value="Conta Contabil:" />
+	<p:inputText value="#{contador.conta.id}"/>
+	<p:commandButton action="#{contador.SelecionaConta(contador.conta.id)}" value="Busca Conta" update="@form"/>
+	<h:outputText value=" " />
+	<h:outputText value="Nome da Conta:" />
+	<p:inputText value="#{contador.conta.descricao}" />
+	<p:commandButton action="#{contador.setaContaDC()}" value="Confirmar" update="@form"/>
+	<h:outputText value=" " />
+	<h:outputText value="Valor:" />
+	<p:inputText value="#{contador.dc.valor}" id="valor">
+	<f:convertNumber currencySymbol="$" type="currency"></f:convertNumber>
+	</p:inputText>
+	<h:outputText value="DC" />
+	<p:inputText value="#{contador.dc.tipo}" id="dc"/>
+	<p:message for="dc" />
+	<h:outputText value=" " />
+	<h:outputText value=" " />
+	<p:commandButton action="#{contador.addListDC()}" value="Adicionar Item" update="@form"/>
+</h:panelGrid>
+</p:panel>
+<p:dataTable var="dc" value="#{contador.listdc}">
+    <p:column headerText="Conta Contabil">
+        <h:outputText value="#{dc.conta.id}" />
+    </p:column>
+    <p:column headerText="Nome da Conta">
+        <h:outputText value="#{dc.conta.descricao}" />
+    </p:column>
+    <p:column headerText="Valor:">
+        <h:outputText value="#{dc.valor}" />
+    </p:column>
+     <p:column headerText="D/C:">
+        <h:outputText value="#{dc.tipo}" />
+    </p:column>
+      <p:column headerText="Opção">
+        <p:commandButton action="#{contador.listdc.remove(dc)}" icon="ui-icon-trash" update="@form"/>
+    </p:column>
+</p:dataTable>
+</p:panel>
+<p:commandButton action="#{contador.RealizaLancamento(contador.e)}" value="Salvar" update="@form"/>
+</p:panel>
+<p:panel id="menuLateral">
+	<p:menu>
+	  <p:submenu label="Operações Contábeis" header="Menu de ações">
+	    <p:menuitem value="Realiza Lancamento" />
+	    <p:menuitem value="Gerar DRE" />
+	  </p:submenu>
+	  <p:submenu label="Consultas">
+	    <p:menuitem value="Lançamento" />
+	    <p:menuitem value="DRE" />
+	  </p:submenu>
+	</p:menu>
+</p:panel>
+</p:dashboard>
+</h:form>
+</h:body> 
+</html>
+
+
+

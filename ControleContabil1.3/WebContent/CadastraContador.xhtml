@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:p="http://primefaces.org/ui">   
+
+<h:head></h:head> 
+<h:body> 
+<h:form>
+<p:dashboard id="board" model="#{dashBoardView.model}">
+<p:panel id="telaPrincipal" header="Tela principal Usuário: Michel garcia Furtado" style="width:1000px;">
+<p:panel id="CadastraEmpresa" header="Cadastro de Contador">
+ <h:panelGrid columns="2">
+    <h:outputText value="CPF: " />
+	<p:inputText  value="389.001.256-55" />
+	<h:outputText value="Nome: " />
+	<p:inputText value="Pedro Araujo de Moraes" size="50"/>
+	<h:outputText value="RG:" />
+	<p:inputText value="551234565" />
+	<h:outputText value="Senha:" />
+	<p:inputText value="123"/>
+	<h:outputText value="CRC" />
+	<p:inputText value="01444401"/>
+	<h:outputText value="Data de Admissão" />
+	<p:inputText value="21/10/2005"/>
+	<h:outputText value="Rua:"/>
+	<p:inputText value="R. Firmino Mineli" size="50"/>
+	<h:outputText value="Nº:" />
+	<p:inputText value="130"/>
+	<h:outputText value="Complemento:" />
+	<p:inputText value="Casa"/>
+	<h:outputText value="CEP:" />
+	<p:inputText value="18030718"/>
+	<h:outputText value="Bairro:" />
+	<p:inputText value="Vl. Fiori"/>
+	<h:outputText value="Município:" />
+	<p:inputText value="Sorocaba"/>
+	<h:outputText value="UF:" />
+	<p:inputText value="SP"/>
+	<h:outputText value="Telefone 1:" />
+	<p:inputText value="(15)3222-7250"/>
+	<h:outputText value="Telefone 2:" />
+	<p:inputText value="(15)98123-6490"/>
+	<h:outputText value="E-Mail:" />
+	<p:inputText value="pearaujo@outlook.com" size="50"/>
+	
+	<p:commandButton action="#{adminbean.CadastrarEmpresa(empresa)}" value="Cadastrar" />
+
+</h:panelGrid>
+</p:panel>
+</p:panel>
+<p:panel id="menuLateral">
+	<p:menu>
+	  <p:submenu label="Cadastro" header="Menu de ações">
+	    <p:menuitem value="Empresa" />
+	    <p:menuitem value="Proprietario" />
+	    <p:menuitem value="Contador" />
+	  </p:submenu>
+	  <p:submenu label="Vincular">
+	    <p:menuitem value="Proprietario" />
+	    <p:menuitem value="Contador" />
+	  </p:submenu>
+	  <p:submenu label="Consultas">
+	   <p:menuitem value="Empresa" />
+	    <p:menuitem value="Lançamento" />
+	    <p:menuitem value="DRE" />
+	  </p:submenu>
+	</p:menu>
+</p:panel>
+</p:dashboard>
+</h:form>
+</h:body> 
+</html>
+

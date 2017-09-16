@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" > 
+
+<h:head>
+
+</h:head> 
+<h:body> 
+
+<h:form id="frmLogin" style="margin-left:30%; width: 500px;">
+
+<p:panel header="Insira CPF e a senha para entrar no sistema" footer="design BY Michel">
+<p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+<h:panelGrid columns="2" >
+	<h:outputText value="CPF: " />
+	<p:inputText value="#{user.user.cpf}" required="true" requiredMessage="Informe o CPF"/>
+	<h:outputText value="Senha: " />
+	<p:password value="#{user.user.senha}" required="true" requiredMessage="Informe a senha"/>
+	<p:commandButton action="#{user.login()}" value="Logar" update="frmLogin"/>
+</h:panelGrid>	
+</p:panel>
+</h:form>
+
+</h:body> 
+</html>

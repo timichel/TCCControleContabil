@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+ <session-factory name="">
+  <!-- Dados da conexao com o banco -->
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/controlecontabildb</property>
+  <property name="hibernate.connection.password">MasterKey</property>
+  <property name="hibernate.connection.username">root</property>
+  <!-- Dialeto do MySQL -->
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+  <!-- Habilita o hibernate a gerenciar todo o contexto da seção do banco de dados -->
+  <property name="hibernate.current_session_context_class">thread</property>
+  <!-- mostra o sql ja formatado -->
+  <property name="hibernate.show_sql">true</property>
+  <property name="hibernate.format_sql">true</property>
+  <!--Exclui e cria novamente o banco de dados no startup-->
+  <property name="hibernate.hbm2ddl.auto">create-drop</property>
+  <mapping class="com.model.Proprietario"/>
+  <mapping class="com.model.Admin"/>
+  <mapping class="com.model.User"/>
+  <mapping class="com.model.Empresa"/>
+  <mapping class="com.model.Endereco"/>
+  <mapping class="com.model.Contador"/>
+ </session-factory>
+</hibernate-configuration>
